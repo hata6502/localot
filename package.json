@@ -1,0 +1,23 @@
+{
+  "name": "localot",
+  "version": "1.0.0",
+  "description": "The local OT text editor. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hato6502/localot.git"
+  },
+  "author": "hato6502",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Hato6502/localot/issues"
+  },
+  "homepage": "https://github.com/Hato6502/localot#readme",
+  "devDependencies": {
+    "ot": "0.0.15",
+    "socket.io": "^2.1.1"
+  }
+}
