@@ -1,0 +1,11 @@
+[Unit]
+Description = The local OT text editor. 
+
+[Service]
+WorkingDirectory = /home/pi/localot # your localot directory here. 
+ExecStart = /usr/bin/npm start
+Restart = always
+Type = simple
+
+[Install]
+WantedBy = multi-user.target
