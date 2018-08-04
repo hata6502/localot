@@ -17,7 +17,7 @@
         </style>
         <script>
 $(() => {
-    var socket = io.connect('http://localhost:8124');
+    var socket = io.connect();
 
     socket.on('doc', (doc) => {
         $('body').append('<textarea id="editor"></textarea>');

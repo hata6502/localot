@@ -1,31 +1,26 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'run', 'server' ]
-2 info using npm@3.5.2
-3 info using node@v8.10.0
-4 verbose stack Error: Failed to parse json
-4 verbose stack Unexpected token 's' at 8:6
-4 verbose stack     "server": "node server.js"
-4 verbose stack      ^
-4 verbose stack     at parseError (/usr/share/npm/node_modules/read-package-json/read-json.js:379:11)
-4 verbose stack     at parseJson (/usr/share/npm/node_modules/read-package-json/read-json.js:68:23)
-4 verbose stack     at /usr/share/npm/node_modules/read-package-json/read-json.js:48:5
-4 verbose stack     at /usr/share/npm/node_modules/graceful-fs/graceful-fs.js:76:16
-4 verbose stack     at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:511:3)
-5 verbose cwd /home/hato/localot
-6 error Linux 4.15.0-20-generic
-7 error argv "/usr/bin/node" "/usr/bin/npm" "run" "server"
-8 error node v8.10.0
-9 error npm  v3.5.2
-10 error file /home/hato/localot/package.json
-11 error code EJSONPARSE
-12 error Failed to parse json
-12 error Unexpected token 's' at 8:6
-12 error     "server": "node server.js"
-12 error      ^
-13 error File: /home/hato/localot/package.json
-14 error Failed to parse package.json data.
-14 error package.json must be actual JSON, not just JavaScript.
-14 error
-14 error This is not a bug in npm.
-14 error Tell the package author to fix their package.json file. JSON.parse
-15 verbose exit [ 1, true ]
+1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'start' ]
+2 info using npm@1.4.21
+3 info using node@v4.8.2
+4 verbose run-script [ 'prestart', 'start', 'poststart' ]
+5 info prestart localot@0.0.0
+6 info start localot@0.0.0
+7 verbose unsafe-perm in lifecycle true
+8 info localot@0.0.0 Failed to exec start script
+9 error localot@0.0.0 start: `node server.js`
+9 error Exit status 1
+10 error Failed at the localot@0.0.0 start script.
+10 error This is most likely a problem with the localot package,
+10 error not with npm itself.
+10 error Tell the author that this fails on your system:
+10 error     node server.js
+10 error You can get their info via:
+10 error     npm owner ls localot
+10 error There is likely additional logging output above.
+11 error System Linux 4.14.34-v7+
+12 error command "/usr/bin/nodejs" "/usr/bin/npm" "start"
+13 error cwd /home/pi/localot
+14 error node -v v4.8.2
+15 error npm -v 1.4.21
+16 error code ELIFECYCLE
+17 verbose exit [ 1, true ]
