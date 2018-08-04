@@ -10,6 +10,13 @@ var EditorSocketIOServer = require('ot/lib/editor-socketio-server');
  * Copyright © 2012-2014 Tim Baumann, http://timbaumann.info
  * Released under the MIT License, https://github.com/Operational-Transformation/ot.js/blob/master/LICENSE
  */
+{
+var EventEmitter     = require('events').EventEmitter;
+var TextOperation    = require('ot/lib/text-operation');
+var WrappedOperation = require('ot/lib/wrapped-operation');
+var Server           = require('ot/lib/server');
+var Selection        = require('ot/lib/selection');
+var util             = require('util');
 EditorSocketIOServer.prototype.addClient = function (socket) {
   var self = this;
   socket
@@ -49,6 +56,7 @@ EditorSocketIOServer.prototype.addClient = function (socket) {
       }
     });
 };
+}
 
 var app = Express();
 app.get('/', (req, res, next) => {
