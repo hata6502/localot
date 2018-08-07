@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+        <link rel="stylesheet" href="codemirror.min.css"/>
+        <script src="jquery-3.3.1.min.js"></script>
+        <script src="socket.io.js"></script>
+        <script src="ot-min.js"></script>
+        <script src="codemirror.min.js"></script>
+
+        <style>
+.CodeMirror {
+    width: 100%;
+    height: 100%;
+}
+        </style>
+        <script>
+$(() => {
+    var socket = io.connect();
+
+    socket.on('doc', (doc) => {
+        $('body').append('<textarea id="editor"></textarea>');
+
+        var editor = CodeMirror.fromTextArea($('#editor')[0], {
+            lineNumbers: true, 
+        });
+        editor.setValue(doc.str);
+
+        var sockAdapt = new ot.SocketIOAdapter(socket);
+        var editAdapt = new ot.CodeMirrorAdapter(editor);
+        var otClient = new ot.EditorClient(doc.revision, doc.clients, sockAdapt, editAdapt);
+    });
+});
+        </script>
+    </head>
+    <body>
+    </body>
+</html>
+

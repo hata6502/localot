@@ -59,9 +59,7 @@ EditorSocketIOServer.prototype.addClient = function (socket) {
 }
 
 var app = Express();
-app.get('/', (req, res, next) => {
-    res.sendFile(__dirname + '/client.html');
-});
+app.use('/', Express.static(__dirname + '/client'));
 
 var http = Http.Server(app);
 http.listen(PORT);
