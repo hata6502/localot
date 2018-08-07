@@ -2,7 +2,7 @@
 Description = The local OT text editor. 
 
 [Service]
-WorkingDirectory = /opt/localot # your localot directory here. 
+WorkingDirectory = /opt/localot
 ExecStart = /usr/bin/npm start
 Restart = always
 Type = simple
