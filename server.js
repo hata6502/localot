@@ -3,6 +3,7 @@ var Express = require('express');
 var SocketIO = require('socket.io');
 var EditorSocketIOServer = require('ot/lib/editor-socketio-server');
 var fs = require('fs');
+var path = require('path');
 
 /**
  * ot.js patch for socket.io >= 1.0
@@ -57,7 +58,12 @@ var fs = require('fs');
     };
 }
 
-var path = process.argv[2];
+if (process.argv.length != 4) {
+    console.error("Usage: node server.js filepath port");
+    process.exit();
+}
+
+var filepath = process.argv[2];
 var port = Number(process.argv[3]);
 
 var app = Express();
@@ -68,14 +74,14 @@ http.listen(port);
 
 var read = "";
 try {
-    read = String(fs.readFileSync(path));
+    read = String(fs.readFileSync(filepath));
 } catch (e) {
 }
 var ot = new EditorSocketIOServer(read, [], 0, false);
 
 var io = SocketIO(http);
 io.on('connection', (socket) => {
-    io.emit('ext', path.split('.').pop());
+    io.emit('name', path.basename(filepath));
     ot.addClient(socket);
 });
 
@@ -86,9 +92,9 @@ process.stdin.on('data', (data) => {
 });
 
 setInterval(() => {
-    fs.writeFileSync(path, ot.document);
+    fs.writeFileSync(filepath, ot.document);
 }, 1000 * 60);
 
 process.on('exit', () => {
-    fs.writeFileSync(path, ot.document);
+    fs.writeFileSync(filepath, ot.document);
 });

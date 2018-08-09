@@ -195,11 +195,12 @@
         $(() => {
             var socket = io.connect();
             var mode = "";
+            var editor;
 
             socket.on('doc', (doc) => {
                 $('body').html('<textarea id="editor"></textarea>');
 
-                var editor = CodeMirror.fromTextArea($('#editor')[0], {
+                editor = CodeMirror.fromTextArea($('#editor')[0], {
                     lineNumbers: true,
                     mode: mode,
                 });
@@ -210,11 +211,15 @@
                 var otClient = new ot.EditorClient(doc.revision, doc.clients, sockAdapt, editAdapt);
             });
 
-            socket.on('ext', (ext) => {
+            socket.on('name', (name) => {
+                var ext;
+
+                document.title = name;
+                ext = name.split('.').pop();
                 CodeMirror.modeInfo.forEach((defmode) => {
                     if (defmode.ext) defmode.ext.forEach((defext) => {
                         if (ext == defext) {
-                            mode = defmode.mode;
+                            mode = defmode.mime;
                         }
                     });
                 });
