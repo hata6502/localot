@@ -1,40 +1,227 @@
-<!doctype html>
+﻿<!doctype html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
-        <link rel="stylesheet" href="codemirror.min.css"/>
-        <script src="jquery-3.3.1.min.js"></script>
-        <script src="socket.io.js"></script>
-        <script src="ot-min.js"></script>
-        <script src="codemirror.min.js"></script>
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="socket.io.js"></script>
+    <script src="ot-min.js"></script>
+    <link rel="stylesheet" href="codemirror.min.css" />
+    <script src="codemirror.min.js"></script>
+    <script src="mode/meta.js"></script>
 
-        <style>
-.CodeMirror {
-    width: 100%;
-    height: 100%;
-}
-        </style>
-        <script>
-$(() => {
-    var socket = io.connect();
+    <link rel="stylesheet" href="theme/3024-day.css" />
+    <link rel="stylesheet" href="theme/3024-night.css" />
+    <link rel="stylesheet" href="theme/abcdef.css" />
+    <link rel="stylesheet" href="theme/ambiance-mobile.css" />
+    <link rel="stylesheet" href="theme/ambiance.css" />
+    <link rel="stylesheet" href="theme/base16-dark.css" />
+    <link rel="stylesheet" href="theme/base16-light.css" />
+    <link rel="stylesheet" href="theme/bespin.css" />
+    <link rel="stylesheet" href="theme/blackboard.css" />
+    <link rel="stylesheet" href="theme/cobalt.css" />
+    <link rel="stylesheet" href="theme/colorforth.css" />
+    <link rel="stylesheet" href="theme/darcula.css" />
+    <link rel="stylesheet" href="theme/dracula.css" />
+    <link rel="stylesheet" href="theme/duotone-dark.css" />
+    <link rel="stylesheet" href="theme/duotone-light.css" />
+    <link rel="stylesheet" href="theme/eclipse.css" />
+    <link rel="stylesheet" href="theme/elegant.css" />
+    <link rel="stylesheet" href="theme/erlang-dark.css" />
+    <link rel="stylesheet" href="theme/gruvbox-dark.css" />
+    <link rel="stylesheet" href="theme/hopscotch.css" />
+    <link rel="stylesheet" href="theme/icecoder.css" />
+    <link rel="stylesheet" href="theme/idea.css" />
+    <link rel="stylesheet" href="theme/isotope.css" />
+    <link rel="stylesheet" href="theme/lesser-dark.css" />
+    <link rel="stylesheet" href="theme/liquibyte.css" />
+    <link rel="stylesheet" href="theme/lucario.css" />
+    <link rel="stylesheet" href="theme/material.css" />
+    <link rel="stylesheet" href="theme/mbo.css" />
+    <link rel="stylesheet" href="theme/mdn-like.css" />
+    <link rel="stylesheet" href="theme/midnight.css" />
+    <link rel="stylesheet" href="theme/monokai.css" />
+    <link rel="stylesheet" href="theme/neat.css" />
+    <link rel="stylesheet" href="theme/neo.css" />
+    <link rel="stylesheet" href="theme/night.css" />
+    <link rel="stylesheet" href="theme/oceanic-next.css" />
+    <link rel="stylesheet" href="theme/panda-syntax.css" />
+    <link rel="stylesheet" href="theme/paraiso-dark.css" />
+    <link rel="stylesheet" href="theme/paraiso-light.css" />
+    <link rel="stylesheet" href="theme/pastel-on-dark.css" />
+    <link rel="stylesheet" href="theme/railscasts.css" />
+    <link rel="stylesheet" href="theme/rubyblue.css" />
+    <link rel="stylesheet" href="theme/seti.css" />
+    <link rel="stylesheet" href="theme/shadowfox.css" />
+    <link rel="stylesheet" href="theme/solarized.css" />
+    <link rel="stylesheet" href="theme/ssms.css" />
+    <link rel="stylesheet" href="theme/the-matrix.css" />
+    <link rel="stylesheet" href="theme/tomorrow-night-bright.css" />
+    <link rel="stylesheet" href="theme/tomorrow-night-eighties.css" />
+    <link rel="stylesheet" href="theme/ttcn.css" />
+    <link rel="stylesheet" href="theme/twilight.css" />
+    <link rel="stylesheet" href="theme/vibrant-ink.css" />
+    <link rel="stylesheet" href="theme/xq-dark.css" />
+    <link rel="stylesheet" href="theme/xq-light.css" />
+    <link rel="stylesheet" href="theme/yeti.css" />
+    <link rel="stylesheet" href="theme/zenburn.css" />
+    <script src="mode/clike.js"></script>
+    <script src="mode/javascript.js"></script>
+    <script src="mode/apl.js"></script>
+    <script src="mode/asciiarmor.js"></script>
+    <script src="mode/asn.1.js"></script>
+    <script src="mode/asterisk.js"></script>
+    <script src="mode/brainfuck.js"></script>
+    <script src="mode/clike.js"></script>
+    <script src="mode/clojure.js"></script>
+    <script src="mode/cmake.js"></script>
+    <script src="mode/cobol.js"></script>
+    <script src="mode/coffeescript.js"></script>
+    <script src="mode/commonlisp.js"></script>
+    <script src="mode/crystal.js"></script>
+    <script src="mode/css.js"></script>
+    <script src="mode/cypher.js"></script>
+    <script src="mode/d.js"></script>
+    <script src="mode/dart.js"></script>
+    <script src="mode/diff.js"></script>
+    <script src="mode/django.js"></script>
+    <script src="mode/dtd.js"></script>
+    <script src="mode/dylan.js"></script>
+    <script src="mode/ebnf.js"></script>
+    <script src="mode/ecl.js"></script>
+    <script src="mode/eiffel.js"></script>
+    <script src="mode/elm.js"></script>
+    <script src="mode/erlang.js"></script>
+    <script src="mode/fcl.js"></script>
+    <script src="mode/forth.js"></script>
+    <script src="mode/fortran.js"></script>
+    <script src="mode/gas.js"></script>
+    <script src="mode/gfm.js"></script>
+    <script src="mode/gherkin.js"></script>
+    <script src="mode/go.js"></script>
+    <script src="mode/groovy.js"></script>
+    <script src="mode/haml.js"></script>
+    <script src="mode/haskell-literate.js"></script>
+    <script src="mode/haskell.js"></script>
+    <script src="mode/haxe.js"></script>
+    <script src="mode/htmlembedded.js"></script>
+    <script src="mode/htmlmixed.js"></script>
+    <script src="mode/http.js"></script>
+    <script src="mode/idl.js"></script>
+    <script src="mode/javascript.js"></script>
+    <script src="mode/jinja2.js"></script>
+    <script src="mode/jsx.js"></script>
+    <script src="mode/julia.js"></script>
+    <script src="mode/livescript.js"></script>
+    <script src="mode/lua.js"></script>
+    <script src="mode/markdown.js"></script>
+    <script src="mode/mathematica.js"></script>
+    <script src="mode/mbox.js"></script>
+    <script src="mode/meta.js"></script>
+    <script src="mode/mirc.js"></script>
+    <script src="mode/mllike.js"></script>
+    <script src="mode/modelica.js"></script>
+    <script src="mode/mscgen.js"></script>
+    <script src="mode/mumps.js"></script>
+    <script src="mode/nginx.js"></script>
+    <script src="mode/ntriples.js"></script>
+    <script src="mode/octave.js"></script>
+    <script src="mode/oz.js"></script>
+    <script src="mode/pascal.js"></script>
+    <script src="mode/pegjs.js"></script>
+    <script src="mode/perl.js"></script>
+    <script src="mode/php.js"></script>
+    <script src="mode/pig.js"></script>
+    <script src="mode/powershell.js"></script>
+    <script src="mode/properties.js"></script>
+    <script src="mode/protobuf.js"></script>
+    <script src="mode/pug.js"></script>
+    <script src="mode/puppet.js"></script>
+    <script src="mode/python.js"></script>
+    <script src="mode/q.js"></script>
+    <script src="mode/r.js"></script>
+    <script src="mode/rpm.js"></script>
+    <script src="mode/rst.js"></script>
+    <script src="mode/ruby.js"></script>
+    <script src="mode/sas.js"></script>
+    <script src="mode/sass.js"></script>
+    <script src="mode/scheme.js"></script>
+    <script src="mode/shell.js"></script>
+    <script src="mode/sieve.js"></script>
+    <script src="mode/slim.js"></script>
+    <script src="mode/smalltalk.js"></script>
+    <script src="mode/smarty.js"></script>
+    <script src="mode/solr.js"></script>
+    <script src="mode/soy.js"></script>
+    <script src="mode/sparql.js"></script>
+    <script src="mode/spreadsheet.js"></script>
+    <script src="mode/sql.js"></script>
+    <script src="mode/stex.js"></script>
+    <script src="mode/stylus.js"></script>
+    <script src="mode/swift.js"></script>
+    <script src="mode/tcl.js"></script>
+    <script src="mode/textile.js"></script>
+    <script src="mode/tiddlywiki.js"></script>
+    <script src="mode/tiki.js"></script>
+    <script src="mode/toml.js"></script>
+    <script src="mode/tornado.js"></script>
+    <script src="mode/troff.js"></script>
+    <script src="mode/ttcn-cfg.js"></script>
+    <script src="mode/ttcn.js"></script>
+    <script src="mode/turtle.js"></script>
+    <script src="mode/twig.js"></script>
+    <script src="mode/vb.js"></script>
+    <script src="mode/vbscript.js"></script>
+    <script src="mode/velocity.js"></script>
+    <script src="mode/verilog.js"></script>
+    <script src="mode/vhdl.js"></script>
+    <script src="mode/vue.js"></script>
+    <script src="mode/webidl.js"></script>
+    <script src="mode/xml.js"></script>
+    <script src="mode/xquery.js"></script>
+    <script src="mode/yacas.js"></script>
+    <script src="mode/yaml-frontmatter.js"></script>
+    <script src="mode/yaml.js"></script>
+    <script src="mode/z80.js"></script>
 
-    socket.on('doc', (doc) => {
-        $('body').append('<textarea id="editor"></textarea>');
+    <style>
+        .CodeMirror {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <script>
+        $(() => {
+            var socket = io.connect();
+            var mode = "";
 
-        var editor = CodeMirror.fromTextArea($('#editor')[0], {
-            lineNumbers: true, 
+            socket.on('doc', (doc) => {
+                $('body').html('<textarea id="editor"></textarea>');
+
+                var editor = CodeMirror.fromTextArea($('#editor')[0], {
+                    lineNumbers: true,
+                    mode: mode,
+                });
+                editor.setValue(doc.str);
+
+                var sockAdapt = new ot.SocketIOAdapter(socket);
+                var editAdapt = new ot.CodeMirrorAdapter(editor);
+                var otClient = new ot.EditorClient(doc.revision, doc.clients, sockAdapt, editAdapt);
+            });
+
+            socket.on('ext', (ext) => {
+                CodeMirror.modeInfo.forEach((defmode) => {
+                    if (defmode.ext) defmode.ext.forEach((defext) => {
+                        if (ext == defext) {
+                            mode = defmode.mode;
+                        }
+                    });
+                });
+            });
         });
-        editor.setValue(doc.str);
-
-        var sockAdapt = new ot.SocketIOAdapter(socket);
-        var editAdapt = new ot.CodeMirrorAdapter(editor);
-        var otClient = new ot.EditorClient(doc.revision, doc.clients, sockAdapt, editAdapt);
-    });
-});
-        </script>
-    </head>
+    </script>
+</head>
     <body>
     </body>
 </html>
