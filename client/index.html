@@ -198,7 +198,7 @@
             var editor;
 
             socket.on('doc', (doc) => {
-                $('body').html('<h1>globalot</h1><p>The public dynamic bulletin board. </p><textarea id="editor"></textarea>');
+                $('body').html('<textarea id="editor"></textarea>');
 
                 editor = CodeMirror.fromTextArea($('#editor')[0], {
                     lineNumbers: true,
