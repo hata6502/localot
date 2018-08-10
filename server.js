@@ -59,7 +59,8 @@ var path = require('path');
 }
 
 if (process.argv.length != 4) {
-    console.error("Usage: node server.js filepath port");
+    console.error('Usage: node server.js filepath port');
+    console.error('To stop server safe, please type "exit". ');
     process.exit();
 }
 
@@ -86,7 +87,7 @@ io.on('connection', (socket) => {
 });
 
 process.stdin.on('data', (data) => {
-    if (data == 'exit\r\n') {
+    if (data == 'exit\r\n' || data == 'exit\n') {
         process.exit();
     }
 });
