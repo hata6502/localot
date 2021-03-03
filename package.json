@@ -20,6 +20,6 @@
   "dependencies": {
     "express": "^4.16.3",
     "ot": "0.0.15",
-    "socket.io": "^2.1.1"
+    "socket.io": "^2.4.0"
   }
 }
